@@ -3,7 +3,8 @@
 
 Cet article est disponible en francais à `README.fr.md`.
 
-The tool passe-partout presented all along this tip can be found at passe-partout.
+The tool passe-partout presented all along this tip can be found at
+https://github.com/jbaviat/passe-partout
 
 
 # Introduction
@@ -36,7 +37,7 @@ to the RSA structure used by libcrypto:
    These functions implement RSA public key encryption and signatures as
    defined in PKCS #1 v2.0 [RFC 2437].
 
-   The RSA structure consists of several BIGNUM components. It can contain
+   The RSA structure consists of several `BIGNUM` components. It can contain
    public as well as private RSA keys:
 
 ```C
@@ -62,12 +63,12 @@ This structure includes all the integers involved in RSA signing and ciphering
 
 ## DSA structure
 
-OpenSSL DSA man page dsa(3) describes the data structures and the main
+OpenSSL DSA man page `dsa(3)` describes the data structures and the main
 functions:
 
 `dsa(3)` extract:
 
-   The DSA structure consists of several BIGNUM components.
+   The DSA structure consists of several `BIGNUM` components.
 
 ```C
     struct
@@ -151,8 +152,8 @@ $ ldd /usr/bin/ssh-agent | grep libcrypto
 
 
 
-Since the 12 of Augoust 2002, setgid(2) and setegid(2) calls have been added
-to the ssh-agent source code in order to prevent the process memory to be
+Since the 12 of August 2002, `setgid(2)` and `setegid(2)` calls have been added
+to the `ssh-agent` source code in order to prevent the process memory to be
 read by any non-root user:
 
 http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/ssh-agent.c.diff?r1=1.99&r2=1.98&f=h
@@ -308,15 +309,15 @@ $ head -n 3 /proc/2620/maps
 ## Validating the retrieved data
 
 The memory is browsed in order to retrieve RSA and DSA structures. Those
-structures have the particularity to hold contiguous pointers heading to BIGNUM
-structures. Each BIGNUM holds itself a pointer to a BN_ULONG array.
+structures have the particularity to hold contiguous pointers heading to
+`BIGNUM` structures. Each `BIGNUM` holds itself a pointer to a BN_ULONG array.
 
 Those structures can't be accessed directly from our programm (since they aren't
 in the memory of our process). They have to be accessed through our memory
 reading methods.
 
 Once the structure has been found (assuming we have been able to read and
-interpret each pointer as BIGNUM), we have to check it really is a RSA or DSA
+interpret each pointer as `BIGNUM`), we have to check it really is a RSA or DSA
 structure.
 
 OpenSSL provides the RSA_check_key function, which takes as argument an RSA
@@ -339,7 +340,8 @@ DSA public key:
 
 # Demonstrations
 
-The tool passe-partout presented all along this tip can be found at passe-partout.
+The tool passe-partout presented all along this tip can be found at
+https://github.com/jbaviat/passe-partout .
 
 ## ssh-agent
 
