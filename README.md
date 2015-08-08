@@ -1,5 +1,4 @@
-# In-memory extraction of SSL private keys
-
+# In-memory extraction of SSL private keys [![Build Status](https://travis-ci.org/jbaviat/passe-partout.svg?branch=master)](https://travis-ci.org/jbaviat/passe-partout)
 
 Cet article est disponible en francais à `README.fr.md`.
 
